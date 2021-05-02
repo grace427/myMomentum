@@ -24,7 +24,7 @@ const getDday = () => {
       const hours = `0${now.getHours()}`.slice(-2);
       const minutes = `0${now.getMinutes()}`.slice(-2);
       const seconds = `0${now.getSeconds()}`.slice(-2); 
-      clock.innerText = `${hours} : ${minutes} : ${seconds}`;
+      clock.innerText = `${hours}:${minutes}:${seconds}`;
   }
 
   const getSpecialDate = () => {

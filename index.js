@@ -2,6 +2,11 @@ const body = document.querySelector('body');
 const contents = document.querySelector('.contents');
 const greeting = document.querySelector('.greeting');
 const userName = document.querySelector('#userName');
+
+const container = document.createElement('div');
+const inner = document.createElement('div');
+const form = document.createElement('form');
+const input = document.createElement('input');
  
 
 
@@ -18,35 +23,35 @@ const renderUserName = () => {
 }
 
 const askUserName = () => {
-    const container = document.createElement('div');
-    const inner = document.createElement('div');
-    const input = document.createElement('input');
-    
     contents.style.display = 'none';
     input.className = 'underline';
     inner.innerText = "Hello, What's Your Name?";
     container.className = 'css-center userNameContainer';
+    form.id = "userName";
+    form.appendChild(input);
     container.appendChild(inner);
-    container.appendChild(input);
+    container.appendChild(form);
     body.appendChild(container);  
 }
 
 const handleSubmitUserName = (event) => {
-    if(event.code !== 'Enter') {
+    event.preventDefault();
+    if(event.target.id !== 'userName') {
         return;
     }
-    const name = event.target.value;
+    const name = input.value;
     const userNameContainer = document.querySelector('.userNameContainer');
     localStorage.setItem("userName", name);
     userNameContainer.style.display = 'none';
     contents.style.display = 'block';
+    renderUserName();
 }
 
 const renderGreeting = () => {
 
 }
 
-document.addEventListener('keydown', handleSubmitUserName);
+document.addEventListener('submit', handleSubmitUserName);
 
 
 const init = () => {

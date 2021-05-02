@@ -17,3 +17,42 @@ body {
 .css-center {
   font-size: 3rem;
 }
+
+.clock {
+  font-size: 800%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dDay,
+.greeting {
+  font-size: 200%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.todoContainer {
+  margin-top: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.toDo {
+  margin-bottom: 2%;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.todoList {
+  display: inline-block;
+  margin-left: 20%;
+  list-style: none;
+}
+
+.todoContainer input {
+  font-size: 1rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid grey;
+}
