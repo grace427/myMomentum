@@ -15,7 +15,7 @@ const renderUserName = () => {
     if(userNameLS) {
         const now = new Date(); 
         const hours = now.getHours();
-        const helloByHour = hours >= 12 && hours < 17 ? 'afternoon' : hours >= 17 && hours < 21 ? 'evening' : 'morning'; 
+        const helloByHour = hours >= 12 && hours < 17 ? 'afternoon' : hours >= 17 && hours < 24 ? 'evening' : 'morning'; 
         greeting.innerText = `Good ${helloByHour}, ${userNameLS}.`;
     }else {
         askUserName();
@@ -47,14 +47,21 @@ const handleSubmitUserName = (event) => {
     renderUserName();
 }
 
-const renderGreeting = () => {
-
+const renderBackground = () => {
+    const img = new Image();
+    const url = "https://source.unsplash.com/1600x900/?nature,water";
+    fetch(url).then((response) => {
+        img.src = `${response.url}`;
+        body.appendChild(img);
+    })
 }
+
 
 document.addEventListener('submit', handleSubmitUserName);
 
 
 const init = () => {
+    renderBackground();
     renderUserName();
 }
 
