@@ -11,10 +11,11 @@ body {
 
 .weather {
   width: 100%;
-  height: 10%;
+  height: 18%;
   text-align: end;
   margin-right: 3%;
   font-size: 1.2rem;
+  top: 0;
 }
 
 .underline {
