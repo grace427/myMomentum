@@ -11,12 +11,12 @@ const input = document.createElement('input');
 
 
 const renderUserName = () => {
-    const userNameLS = localStorage.getItem("userName");
-    if(userNameLS) {
+    const storedUserName = localStorage.getItem("userName");
+    if(storedUserName) {
         const now = new Date(); 
         const hours = now.getHours();
         const helloByHour = hours >= 12 && hours < 17 ? 'afternoon' : hours >= 17 && hours < 24 ? 'evening' : 'morning'; 
-        greeting.innerText = `Good ${helloByHour}, ${userNameLS}.`;
+        greeting.innerText = `Good ${helloByHour}, ${storedUserName}.`;
     }else {
         askUserName();
     }

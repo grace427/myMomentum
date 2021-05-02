@@ -1,7 +1,8 @@
 const clock = document.querySelector(".clock");
+const dDay = document.querySelector(".dDay");
 
 const getDday = () => {
-    const xmasDay = new Date("2021-12-24:00:00:00+0900");
+    const xmasDay = new Date("2021-12-25:00:00:00+0900");
     const currentDay = new Date();
     const diff = xmasDay - currentDay; //ms
 
@@ -13,10 +14,7 @@ const getDday = () => {
     const hour = chunkHour % 24;
     const day = (chunkHour - (chunkHour % 24)) / 24;
 
-    span[0].innerText = day;
-    span[1].innerText = `0${hour}`.slice(-2);
-    span[2].innerText = `0${min}`.slice(-2);
-    span[3].innerText = `0${sec}`.slice(-2);
+    dDay.innerText = `✨ ${day} days until christmas! ✨`;
   }
 
   const getCurrentTime = () => {
@@ -27,9 +25,10 @@ const getDday = () => {
       clock.innerText = `${hours}:${minutes}:${seconds}`;
   }
 
-  const getSpecialDate = () => {
-      const specialDateLS = localStorage.getItem("specialDate");
-  }
+  const clockInit = () => {
+    setInterval(getCurrentTime, 1000);
+    getDday();
+}
+  
 
-
-  setInterval(getCurrentTime, 1000);
+  clockInit();

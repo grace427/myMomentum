@@ -1,5 +1,6 @@
 const todoList = document.querySelector('.todoList');
 const todoInput = document.querySelector('.todoContainer input');
+const TODOLIST = "todoList";
 let todoArr = [];
 
 const handleDelete = (event) => {
@@ -7,7 +8,7 @@ const handleDelete = (event) => {
     const id = event.target.parentElement.id;
     const li = todoList.querySelector(`li[id='${id}']`);
     let newTodoArr = todoArr.filter(v => +v.id !== +id);
-    newTodoArr.length === 0 ? localStorage.removeItem("todoList") : localStorage.setItem("todoList", JSON.stringify(newTodoArr));
+    newTodoArr.length === 0 ? localStorage.removeItem(TODOLIST) : localStorage.setItem(TODOLIST, JSON.stringify(newTodoArr));
     todoArr = newTodoArr;
     todoList.innerHTML = "";
     todoArr.forEach(renderTodoList);
@@ -28,7 +29,7 @@ const handleCheckBox = (event) => {
         li.className = '';
         todoObj.checked = false;
     }
-    localStorage.setItem("todoList", JSON.stringify(todoArr));
+    localStorage.setItem(TODOLIST, JSON.stringify(todoArr));
 }
 
 const handleInputTodo = (event) => {
@@ -84,7 +85,7 @@ const renderTodoList = (todoObj) => {
 todoInput.addEventListener('keydown', handleInputTodo);
 
 const todoInit = () => {
-    const storedTodoList = localStorage.getItem("todoList");
+    const storedTodoList = localStorage.getItem(TODOLIST);
     if(storedTodoList) {
         todoList.innerHTML = "";
         todoArr = JSON.parse(storedTodoList);
