@@ -1,7 +1,6 @@
 const body = document.querySelector('body');
 const contents = document.querySelector('.contents');
 const greeting = document.querySelector('.greeting');
-const hello = document.querySelector('#hello');
 const userName = document.querySelector('#userName');
  
 
@@ -9,24 +8,27 @@ const userName = document.querySelector('#userName');
 const renderUserName = () => {
     const userNameLS = localStorage.getItem("userName");
     if(userNameLS) {
-        userName.innerText = userNameLS;
+        const now = new Date(); 
+        const hours = now.getHours();
+        const helloByHour = hours >= 12 && hours < 17 ? 'afternoon' : hours >= 17 && hours < 21 ? 'evening' : 'morning'; 
+        greeting.innerText = `Good ${helloByHour}, ${userNameLS}.`;
     }else {
         askUserName();
     }
 }
 
 const askUserName = () => {
-    const wrapper = document.createElement('div');
+    const container = document.createElement('div');
     const inner = document.createElement('div');
     const input = document.createElement('input');
     
     contents.style.display = 'none';
-    input.className = 'underline userName';
+    input.className = 'underline';
     inner.innerText = "Hello, What's Your Name?";
-    wrapper.classList.add('css-center');
-    wrapper.appendChild(inner);
-    wrapper.appendChild(input);
-    body.appendChild(wrapper);  
+    container.className = 'css-center userNameContainer';
+    container.appendChild(inner);
+    container.appendChild(input);
+    body.appendChild(container);  
 }
 
 const handleSubmitUserName = (event) => {
@@ -34,7 +36,10 @@ const handleSubmitUserName = (event) => {
         return;
     }
     const name = event.target.value;
-    console.log(name);
+    const userNameContainer = document.querySelector('.userNameContainer');
+    localStorage.setItem("userName", name);
+    userNameContainer.style.display = 'none';
+    contents.style.display = 'block';
 }
 
 const renderGreeting = () => {

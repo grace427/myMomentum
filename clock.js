@@ -1,7 +1,4 @@
 const clock = document.querySelector(".clock");
-const hours = document.querySelector("#hours");
-const minutes = document.querySelector("#minutes");
-const seconds = document.querySelector("#seconds");
 
 const getDday = () => {
     const xmasDay = new Date("2021-12-24:00:00:00+0900");
@@ -24,9 +21,10 @@ const getDday = () => {
 
   const getCurrentTime = () => {
       const now = new Date();
-      hours.innerText = `0${now.getHours()}`.slice(-2);
-      minutes.innerText = `0${now.getMinutes()}`.slice(-2);
-      seconds.innerText = `0${now.getSeconds()}`.slice(-2);  
+      const hours = `0${now.getHours()}`.slice(-2);
+      const minutes = `0${now.getMinutes()}`.slice(-2);
+      const seconds = `0${now.getSeconds()}`.slice(-2); 
+      clock.innerText = `${hours} : ${minutes} : ${seconds}`;
   }
 
   const getSpecialDate = () => {
