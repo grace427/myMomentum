@@ -1,0 +1,19 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.underline {
+  font-size: 3rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid grey;
+}
+
+.css-center {
+  font-size: 3rem;
+}
